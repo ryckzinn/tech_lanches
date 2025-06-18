@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema de Vendas de Produtos</title>
+    <!-- Google Material Icons CDN -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Link para o arquivo CSS externo -->
+    <link rel="stylesheet" href="pagina.css" />
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo" aria-label="Logotipo do sistema de vendas">Venda Fácil</a>
+            <nav aria-label="Menu principal">
+                <button class="tab active" data-tab="products" aria-selected="true" role="tab" tabindex="0">Produtos</button>
+                <button class="tab" data-tab="sales" aria-selected="false" role="tab" tabindex="-1">Vendas</button>
+                <button class="tab" data-tab="history" aria-selected="false" role="tab" tabindex="-1">Histórico</button>
+                <button class="btn-primary" id="exportDataBtn" title="Exportar dados">Exportar Dados <span class="material-icons" aria-hidden="true">download</span></button>
+            </nav>
+            <button class="mobile-menu-button" aria-label="Abrir menu móvel" aria-expanded="false" aria-controls="mobileNav" title="Abrir menu móvel">
+                <span class="material-icons" aria-hidden="true">menu</span>
+            </button>
+        </div>
+        <nav id="mobileNav" class="mobile-nav" aria-label="Menu móvel">
+            <button class="tab active" data-tab="products" aria-selected="true" role="tab" tabindex="0">Produtos</button>
+            <button class="tab" data-tab="sales" aria-selected="false" role="tab" tabindex="-1">Vendas</button>
+            <button class="tab" data-tab="history" aria-selected="false" role="tab" tabindex="-1">Histórico</button>
+            <button class="btn-primary" id="exportDataBtnMobile" title="Exportar dados">Exportar Dados <span class="material-icons" aria-hidden="true">download</span></button>
+        </nav>
+    </header>
+    <div id="notification" role="alert" aria-live="assertive"></div>
+
+    <main class="container" tabindex="-1">
+        <!-- Products Tab -->
+        <section id="tab-products" role="tabpanel" aria-labelledby="tab-products-tab">
+            <h1>Gerenciar Produtos</h1>
+            <div class="flex-row">
+                <div class="flex-column">
+                    <form id="productForm" aria-describedby="productFormDesc" novalidate>
+                        <h2 id="productFormDesc">Formulário para adicionar ou editar produtos</h2>
+                        <input type="hidden" id="productId" />
+                        <label for="productName">Nome do Produto</label>
+                        <input type="text" id="productName" name="productName" placeholder="Nome do produto" required autocomplete="off" />
+                        <label for="productPrice">Preço (R$)</label>
+                        <input type="number" id="productPrice" name="productPrice" min="0" step="0.01" placeholder="0.00" required />
+                        <label for="productStock">Estoque</label>
+                        <input type="number" id="productStock" name="productStock" min="0" step="1" placeholder="0" required />
+                        <button type="submit" id="saveProductBtn" aria-label="Salvar produto">Salvar Produto <span class="material-icons" aria-hidden="true">save</span></button>
+                    </form>
+                </div>
+                <div class="flex-column" style="overflow-x:auto;">
+                    <h2>Lista de Produtos</h2>
+                    <table aria-describedby="productListDesc">
+                        <caption id="productListDesc" class="sr-only">Tabela com todos os produtos cadastrados</caption>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Preço (R$)</th>
+                                <th>Estoque</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productList">
+                            <!-- Dynamic -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sales Tab -->
+        <section id="tab-sales" role="tabpanel" aria-labelledby="tab-sales-tab" hidden>
+            <h1>Registrar Venda</h1>
+            <form id="saleForm" aria-describedby="saleFormDesc" novalidate style="max-width: 450px;">
+                <h2 id="saleFormDesc">Formulário para registrar uma venda de produto</h2>
+                <label for="saleProduct">Produto</label>
+                <select id="saleProduct" name="saleProduct" required aria-required="true" aria-describedby="saleProductDesc">
+                    <option value="">-- Selecione um produto --</option>
+                </select>
+                <label for="saleQuantity">Quantidade</label>
+                <input type="number" id="saleQuantity" name="saleQuantity" min="1" step="1" placeholder="1" required />
+                <button type="submit" aria-label="Registrar venda">Registrar Venda <span class="material-icons" aria-hidden="true">point_of_sale</span></button>
+            </form>
+        </section>
+
+        <!-- History Tab -->
+        <section id="tab-history" role="tabpanel" aria-labelledby="tab-history-tab" hidden>
+            <h1>Histórico de Vendas</h1>
+            <div style="overflow-x:auto;">
+                <table aria-describedby="salesHistoryDesc">
+                    <caption id="salesHistoryDesc" class="sr-only">Tabela com histórico de vendas</caption>
+                    <thead>
+                        <tr>
+                            <th>Data/Hora</th>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário (R$)</th>
+                            <th>Valor Total (R$)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="salesHistoryList">
+                        <!-- Dynamic -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Link para o arquivo JavaScript externo -->
+    <script src="pagina.js"></script>
+</body>
+</html>

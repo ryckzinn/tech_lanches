@@ -1,0 +1,394 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #ffffff;
+    color: #374151;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+/* Scrollbar for webkit */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f9fafb;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 4px;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px 48px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    background: #ffffffcc;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: saturate(180%) blur(10px);
+}
+.header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    color: #111827;
+}
+nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+nav button,
+nav a {
+    font-weight: 600;
+    font-size: 16px;
+    color: #374151;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+nav button:hover,
+nav a:hover,
+nav button:focus,
+nav a:focus {
+    background-color: #e0e7ff;
+    outline: none;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-button {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #374151;
+    font-size: 28px;
+}
+
+/* Sidebar menu for Mobile & Tablet - offcanvas vertical menu */
+.mobile-nav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 260px;
+    height: calc(100vh - 64px);
+    background: #f9fafb;
+    border-right: 1px solid #e5e7eb;
+    padding: 32px 16px;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    z-index: 150;
+    overflow-y: auto;
+    box-shadow: 4px 0 12px rgba(0,0,0,0.08);
+}
+.mobile-nav.show {
+    display: flex;
+}
+.mobile-nav button,
+.mobile-nav a {
+    font-weight: 600;
+    font-size: 18px;
+    color: #374151;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.mobile-nav button:hover,
+.mobile-nav a:hover,
+.mobile-nav button:focus,
+.mobile-nav a:focus {
+    background-color: #d1d5db;
+    outline: none;
+}
+
+/* Main */
+main {
+    flex: 1;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+/* Section titles */
+h1, h2 {
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.15;
+}
+h1 {
+    font-size: 48px;
+    margin-bottom: 24px;
+}
+h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.tab {
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 12px;
+    color: #6b7280;
+    background-color: #f3f4f6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.tab.active {
+    background-color: #4338ca;
+    color: #ede9fe;
+}
+
+/* Forms */
+form {
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.05);
+    padding: 32px;
+    max-width: 650px;
+}
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #374151;
+}
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+    margin-bottom: 16px; /* Added for spacing */
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #4338ca;
+    outline: none;
+}
+select { /* Added styling for select */
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+    background-color: #ffffff; /* Added background for select */
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236B7280'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom arrow */
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+    margin-bottom: 16px; /* Added for spacing */
+}
+select:focus { /* Added styling for select focus */
+    border-color: #4338ca;
+    outline: none;
+}
+
+button[type="submit"], .btn-primary {
+    background-color: #4338ca;
+    color: #ede9fe;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+button[type="submit"]:hover,
+.btn-primary:hover {
+    background-color: #6366f1;
+}
+button[type="submit"]:focus,
+.btn-primary:focus {
+    outline: 3px solid #a5b4fc;
+}
+
+/* Tables */
+table {
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    width: 100%;
+    max-width: 100%;
+}
+th, td {
+    text-align: left;
+    padding: 16px 24px;
+    font-weight: 500;
+    font-size: 16px;
+}
+thead th {
+    color: #4b5563;
+    font-weight: 700;
+}
+tbody tr {
+    background: #f3f4f6;
+    border-radius: 20px;
+}
+tbody tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+tbody tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+tbody tr:hover {
+    background: #e0e7ff;
+}
+
+/* Action buttons inside table */
+.btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    font-size: 20px;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+.btn-icon:hover, .btn-icon:focus {
+    background-color: #dbeafe;
+    color: #4338ca;
+    outline: none;
+}
+
+/* Responsive grid and sections for main content */
+.flex-row {
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+}
+.flex-column {
+    flex: 1 1 400px;
+}
+
+/* Notification banner */
+#notification {
+    position: fixed;
+    top: 76px;
+    right: 24px;
+    min-width: 240px;
+    background-color: #34d399;
+    color: #065f46;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(52, 211, 153, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 200;
+}
+#notification.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Responsive behavior */
+@media (max-width: 767px) {
+    .tabs {
+        justify-content: center;
+    }
+    main {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 0 12px;
+    }
+    .flex-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+    .mobile-menu-button {
+        display: block;
+    }
+    nav {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .flex-row {
+        flex-direction: row;
+        gap: 32px;
+    }
+    nav {
+        display: flex;
+    }
+    .mobile-menu-button {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .tabs {
+        justify-content: flex-start;
+    }
+    nav {
+        display: flex;
+    }
+    .mobile-menu-button {
+        display: none;
+    }
+}
